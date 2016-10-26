@@ -50,3 +50,4 @@ test-suite            hgearman-test
     hs-source-dirs:   test
     main-is:          Runner.hs
     default-language: Haskell2010
+    ghc-options:        -Wall -fhpc -O0
