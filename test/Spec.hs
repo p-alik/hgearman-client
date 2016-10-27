@@ -1,2 +1,1 @@
-main :: IO ()
-main = print "Gearman"
+{-# OPTIONS_GHC -F -pgmF hspec-discover #-}
