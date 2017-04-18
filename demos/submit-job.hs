@@ -21,4 +21,4 @@ main = do
       host = "localhost"::HostName
       port =  4730::Port
       submitFooJob :: GearmanClient -> IO (Either GearmanError B.ByteString)
-      submitFooJob gc = withGearman gc $ C.submitJob (B.pack "foo"::Function) (B.pack "bar")
+      submitFooJob gc = withGearman gc $ C.submitJob (B.pack "reverse"::Function) (B.pack "bar")
