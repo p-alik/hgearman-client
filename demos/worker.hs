@@ -17,7 +17,7 @@ instance Exception ConnectException
 main :: IO ()
 main = do
   c <- connect
-  gc <- either (error . B.unpack) (return) c
+  gc <- either (error . B.unpack) return c
   work gc
   return ()
   where
@@ -28,7 +28,7 @@ main = do
 work :: GearmanClient -> IO ()
 work gc = do
       (res, _) <- flip S.runStateT gc $ do
-          W.registerWorker ((B.pack "reverse")::Function)  (\v -> B.reverse v)
-          S.get >>= (\env -> forever $ S.liftIO (W.runWorker env (return ()) >> (threadDelay $ 1000*1000)))
+          W.registerWorker (B.pack "reverse"::Function)  B.reverse
+          S.get >>= (\env -> forever $ S.liftIO (W.runWorker env (return ()) >> threadDelay (1000*1000)))
           return ()
       return res
